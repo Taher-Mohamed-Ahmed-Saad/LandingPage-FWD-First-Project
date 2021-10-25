@@ -49,7 +49,7 @@ createSections = ()=> {
 
 onscroll = () => {
     let scrollPostion = document.documentElement.scrollTop;
-    const found = false;
+    let found = false;
     sections.forEach(section =>{
         if
         (
@@ -60,7 +60,6 @@ onscroll = () => {
             removeActiveClass();
             addActiveClass(currentSectionId);
             found= true;
-            console.log(section.id);
         }
         // if there is no active section and the user is on the header of the page
         if (!found){
