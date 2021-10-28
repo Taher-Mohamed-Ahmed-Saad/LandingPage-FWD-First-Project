@@ -1,5 +1,9 @@
 const sections = document.querySelectorAll('section');
 
+/**
+* @description this function create the navbar links
+*/
+
 const createNavBar = () => {
     let child =document.createDocumentFragment();
     for(section of sections){
@@ -10,6 +14,11 @@ const createNavBar = () => {
     }
     document.querySelector('ul').appendChild(child);    
 }
+
+
+/**
+* @description this function create the content of sections
+*/
 
 createSections = ()=> {  
 
@@ -47,6 +56,12 @@ createSections = ()=> {
    
 }
 
+
+/**
+* @description this function activates the used section
+*/
+
+
 onscroll = () => {
     let scrollPostion = document.documentElement.scrollTop;
     let found = false;
@@ -68,6 +83,11 @@ onscroll = () => {
     })
 }
 
+
+/**
+* @description this function reomve the active class when leaving the section
+*/
+
 const removeActiveClass = () => {
     document.querySelectorAll('section').forEach(element =>{
         element.classList.remove('active-section');
@@ -77,6 +97,13 @@ const removeActiveClass = () => {
     })
 }
 
+
+/**
+* @description this function add active class to the section which we go to
+* @param id this takes the id of the section and the list item to give them the active class
+*/
+
+
 const addActiveClass = (id) => {
     document.querySelector(`#${id}`).classList.add('active-section');
     document.querySelector(`#l${id}`).classList.add('active-li');
@@ -84,3 +111,20 @@ const addActiveClass = (id) => {
 
 createNavBar();
 createSections();
+
+
+/**
+* @description this fuction add the smoth motion when loading
+*/
+
+
+onload = () =>{
+    document.querySelectorAll('a').forEach(link => {      
+        link.addEventListener('click', function (e) {
+            e.preventDefault();    
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+}
